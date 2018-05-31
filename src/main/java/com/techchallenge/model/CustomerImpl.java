@@ -18,5 +18,19 @@ class CustomerImpl extends LegalPersonImpl implements Customer {
   public void setBusinessArea(String businessArea) {
     this.businessArea = businessArea;
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    boolean equals = super.equals(obj);    
+
+    if (obj != null && obj instanceof Customer) {
+      Customer objCustomer = (Customer)obj;
+      equals = equals && (this.businessArea.equals(objCustomer.getBusinessArea()));
+    } else {
+      equals = false;
+    }
+    
+    return equals;
+  }
   
 }

@@ -18,4 +18,18 @@ abstract class PersonImpl implements Person {
     this.name = name;
   }
 
+  @Override
+  public boolean equals(Object obj) {
+    boolean equals = true;
+
+    if (obj != null && obj instanceof Person) {    
+      Person objPerson = (Person)obj;
+      equals = equals && (this.name.equals(objPerson.getName()));
+    } else {
+      equals = false;
+    }
+
+    return equals;
+  }
+
 }
