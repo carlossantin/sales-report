@@ -32,5 +32,13 @@ class CustomerImpl extends LegalPersonImpl implements Customer {
     
     return equals;
   }
+
+  @Override
+  public int hashCode(){
+    int prime = 37;
+    int result = super.hashCode();
+    result = prime * result + ((businessArea == null) ? 0 : businessArea.hashCode());
+    return result;
+  }
   
 }

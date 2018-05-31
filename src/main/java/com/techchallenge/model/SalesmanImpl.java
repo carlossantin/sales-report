@@ -33,4 +33,12 @@ class SalesmanImpl extends NaturalPersonImpl implements Salesman {
     return equals;
   }
 
+  @Override
+  public int hashCode(){
+    int prime = 37;
+    int result = super.hashCode();
+    result = prime * result + ((salary == null) ? 0 : salary.hashCode());
+    return result;
+  }
+
 }

@@ -32,4 +32,12 @@ abstract class PersonImpl implements Person {
     return equals;
   }
 
+  @Override
+  public int hashCode(){
+    int prime = 37;
+    int result = 1;
+    result = prime * result + ((name == null) ? 0 : name.hashCode());
+    return result;
+  }
+
 }

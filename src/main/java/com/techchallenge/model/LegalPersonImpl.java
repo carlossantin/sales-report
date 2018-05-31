@@ -33,4 +33,12 @@ abstract class LegalPersonImpl extends PersonImpl implements LegalPerson {
     return equals;
   }
 
+  @Override
+  public int hashCode(){
+    int prime = 37;
+    int result = super.hashCode();
+    result = prime * result + ((cnpj == null) ? 0 : cnpj.hashCode());
+    return result;
+  }
+
 }
