@@ -10,4 +10,6 @@ public interface SaleItem {
   public void setQuantity(Integer quantity);
   public void setPrice(Float price);
 
+  public Float getTotalValue();
+
 }

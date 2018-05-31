@@ -48,6 +48,11 @@ class SaleItemImpl implements SaleItem {
   }
 
   @Override
+  public Float getTotalValue() {
+    return this.quantity * this.price;
+  }
+
+  @Override
   public boolean equals(Object obj) {
     boolean equals = true;
 
@@ -61,6 +66,16 @@ class SaleItemImpl implements SaleItem {
     }
 
     return equals;
+  }
+
+  @Override
+  public int hashCode(){
+    int prime = 37;
+    int result = 1;
+    result = prime * result + ((id == null) ? 0 : id.hashCode());
+    result = prime * result + ((quantity == null) ? 0 : quantity.hashCode());
+    result = prime * result + ((price == null) ? 0 : price.hashCode());
+    return result;
   }
 
 

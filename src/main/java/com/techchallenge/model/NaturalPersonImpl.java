@@ -33,4 +33,12 @@ abstract class NaturalPersonImpl extends PersonImpl implements NaturalPerson {
     return equals;
   }
 
+  @Override
+  public int hashCode(){
+    int prime = 37;
+    int result = super.hashCode();
+    result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
+    return result;
+  }
+
 }

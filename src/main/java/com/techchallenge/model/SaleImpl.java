@@ -47,6 +47,15 @@ class SaleImpl implements Sale {
   }
 
   @Override
+  public Float getTotalValue() {
+    Float saleValue = 0f;
+    for (SaleItem item: this.items) {
+      saleValue += item.getTotalValue();
+    }
+    return saleValue;
+  }
+
+  @Override
   public boolean equals(Object obj) {
     boolean equals = true;
 
@@ -61,6 +70,15 @@ class SaleImpl implements Sale {
     }
 
     return equals;
+  }
+
+  @Override
+  public int hashCode(){
+    int prime = 37;
+    int result = 1;
+    result = prime * result + ((id == null) ? 0 : id.hashCode());
+    result = prime * result + ((salesman == null) ? 0 : salesman.hashCode());
+    return result;
   }
 
 }

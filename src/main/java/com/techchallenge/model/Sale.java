@@ -12,4 +12,6 @@ public interface Sale {
   public void addItem(SaleItem item);
   public void setSalesman(Salesman salesman);
 
+  public Float getTotalValue();
+
 }
