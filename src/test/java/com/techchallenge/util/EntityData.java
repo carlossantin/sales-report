@@ -77,7 +77,6 @@ public class EntityData {
 
       items.append(String.join(",", saleItems));
       items.append("]");
-      System.out.println(items.toString());
       fileLineData.addData(items.toString());
       fileLineData.addData(sale.getSalesman().getName());
       fileData.addFileLineData(FieldTypesEnum.SALES.getCode(), fileLineData);
