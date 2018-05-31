@@ -64,7 +64,6 @@ public class ModelLoader {
   public static List<Sale> loadSales(FileData fileData, List<Salesman> salesmanList) {
     List<Sale> sales = new ArrayList<Sale>();    
     List<FileLineData> fileLineData = fileData.getData(FieldTypesEnum.SALES.getCode());
-    System.out.println(fileLineData.size());
 
     fileLineData.forEach( line -> {      
       List<String> lineItem = line.getData();
@@ -93,7 +92,6 @@ public class ModelLoader {
     final StringTokenizer tokenizer = new StringTokenizer(strSaleItems, ",");
     while (tokenizer.hasMoreTokens()) {
       String nextToken = tokenizer.nextToken();
-      System.out.println(nextToken);
       final StringTokenizer fieldsTokenizer = new StringTokenizer(nextToken, "-");
 
       Optional<Integer> itemId = Optional.empty();
