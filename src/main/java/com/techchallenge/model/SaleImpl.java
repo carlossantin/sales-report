@@ -46,4 +46,21 @@ class SaleImpl implements Sale {
     this.salesman = salesman;
   }
 
+  @Override
+  public boolean equals(Object obj) {
+    boolean equals = true;
+
+    if (obj != null && obj instanceof Sale) {    
+      Sale objSale = (Sale)obj;
+      equals = equals && (this.id.equals(objSale.getId())) &&
+                (this.items.size() == objSale.getItems().size()) &&
+                (this.items.equals(objSale.getItems())) &&
+                (this.salesman.equals(objSale.getSalesman()));
+    } else {
+      equals = false;
+    }
+
+    return equals;
+  }
+
 }

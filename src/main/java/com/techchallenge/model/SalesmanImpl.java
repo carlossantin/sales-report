@@ -19,4 +19,18 @@ class SalesmanImpl extends NaturalPersonImpl implements Salesman {
     this.salary = salary;
   }
 
+  @Override
+  public boolean equals(Object obj) {
+    boolean equals = super.equals(obj);    
+
+    if (obj != null && obj instanceof Salesman) {
+      Salesman objSalesman = (Salesman)obj;
+      equals = equals && (this.salary.equals(objSalesman.getSalary()));
+    } else {
+      equals = false;
+    }
+    
+    return equals;
+  }
+
 }
