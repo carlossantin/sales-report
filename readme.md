@@ -41,7 +41,7 @@ After clonning this project you must build and launch the application.
 
   ```
   gradlew clean  
-  gradlew build  
+  gradlew jar  
   ```
 
 To launch the application, run the following command:
