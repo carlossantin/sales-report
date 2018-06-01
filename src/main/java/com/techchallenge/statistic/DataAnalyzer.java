@@ -50,7 +50,7 @@ public class DataAnalyzer {
       Float lastValue = Optional.ofNullable(salesmanSales.get(salesman)).orElse(0f);
       System.out.println(lastValue);
       lastValue += saleValue;
-      
+
       salesmanSales.put(salesman, lastValue);
     });
 
@@ -58,8 +58,6 @@ public class DataAnalyzer {
                   .sorted(Map.Entry.comparingByValue(Comparator.naturalOrder()))
                   .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
                     (oldValue, newValue) -> oldValue, LinkedHashMap::new));
-
-    System.out.println(sortedMap);
 
     return sortedMap.entrySet().iterator().next().getKey();
   }
