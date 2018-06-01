@@ -11,16 +11,16 @@ import java.io.IOException;
 public class FileInputReader {
 
   public static FileData readFileData(String filePath, String fieldDelimiter) throws IOException {
-    FileData inputData = new FileData();
+    final FileData inputData = new FileData();
 
-    FileReader fileReader = new FileReader(filePath);
-    BufferedReader buffReader = new BufferedReader(fileReader);
+    final FileReader fileReader = new FileReader(filePath);
+    final BufferedReader buffReader = new BufferedReader(fileReader);
     
     String line;
     while ((line = buffReader.readLine()) != null) {
       final StringTokenizer tokenizer = new StringTokenizer(line, fieldDelimiter);
       
-      FileLineData currentLineData = new FileLineDataImpl();
+      final FileLineData currentLineData = new FileLineDataImpl();
       Optional<String> fieldId = Optional.empty();
 
       while (tokenizer.hasMoreTokens()) {

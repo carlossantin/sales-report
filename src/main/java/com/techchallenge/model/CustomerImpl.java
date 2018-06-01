@@ -24,7 +24,7 @@ class CustomerImpl extends LegalPersonImpl implements Customer {
     boolean equals = super.equals(obj);    
 
     if (obj != null && obj instanceof Customer) {
-      Customer objCustomer = (Customer)obj;
+      final Customer objCustomer = (Customer)obj;
       equals = equals && (this.businessArea.equals(objCustomer.getBusinessArea()));
     } else {
       equals = false;

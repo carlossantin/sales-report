@@ -24,7 +24,7 @@ abstract class LegalPersonImpl extends PersonImpl implements LegalPerson {
     boolean equals = super.equals(obj);
 
     if (obj != null && obj instanceof LegalPerson) {
-      LegalPerson objPerson = (LegalPerson)obj;
+      final LegalPerson objPerson = (LegalPerson)obj;
       equals = equals && (this.cnpj.equals(objPerson.getCnpj()));
     } else {
       equals = false;

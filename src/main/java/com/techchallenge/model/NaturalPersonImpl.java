@@ -24,7 +24,7 @@ abstract class NaturalPersonImpl extends PersonImpl implements NaturalPerson {
     boolean equals = super.equals(obj);
 
     if (obj != null && obj instanceof NaturalPerson) {
-      NaturalPerson objPerson = (NaturalPerson)obj;
+      final NaturalPerson objPerson = (NaturalPerson)obj;
       equals = equals && (this.cpf.equals(objPerson.getCpf()));
     } else {
       equals = false;

@@ -20,7 +20,7 @@ public class FileLineDataImpl implements FileLineData {
     boolean equals = true;
 
     if (obj != null && obj instanceof FileLineDataImpl) {
-      List<String> objLineData = ((FileLineDataImpl)obj).getData();
+      final List<String> objLineData = ((FileLineDataImpl)obj).getData();
       
       if (lineData.size() == objLineData.size()) {
         

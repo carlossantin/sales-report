@@ -57,7 +57,7 @@ class SaleItemImpl implements SaleItem {
     boolean equals = true;
 
     if (obj != null && obj instanceof SaleItem) {    
-      SaleItem objSaleItem = (SaleItem)obj;
+      final SaleItem objSaleItem = (SaleItem)obj;
       equals = equals && (this.id.equals(objSaleItem.getId())) &&
                 (this.quantity.equals(objSaleItem.getQuantity())) &&
                 (this.price.equals(objSaleItem.getPrice()));

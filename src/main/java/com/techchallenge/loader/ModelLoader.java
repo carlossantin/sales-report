@@ -28,15 +28,15 @@ public class ModelLoader {
   private static final Integer SALE_SALESMAN_IDX = 2;
 
   public static List<Salesman> loadSalesman(FileData fileData) {
-    List<Salesman> lstSalesman = new ArrayList<Salesman>();
-    List<FileLineData> fileLineData = fileData.getData(FieldTypesEnum.SALESMAN.getCode());
+    final List<Salesman> lstSalesman = new ArrayList<Salesman>();
+    final List<FileLineData> fileLineData = fileData.getData(FieldTypesEnum.SALESMAN.getCode());
 
     fileLineData.forEach( line -> {
-      List<String> lineItem = line.getData();
+      final List<String> lineItem = line.getData();
 
-      String cpf = lineItem.get(SALESMAN_CPF_IDX);
-      String name = lineItem.get(SALESMAN_NAME_IDX);
-      Float salary = Float.valueOf(lineItem.get(SALESMAN_SALARY_IDX));
+      final String cpf = lineItem.get(SALESMAN_CPF_IDX);
+      final String name = lineItem.get(SALESMAN_NAME_IDX);
+      final Float salary = Float.valueOf(lineItem.get(SALESMAN_SALARY_IDX));
 
       lstSalesman.add(ModelFactory.newSalesman(name, cpf, salary));
     });
@@ -45,15 +45,15 @@ public class ModelLoader {
   }
 
   public static List<Customer> loadCustomer(FileData fileData) {
-    List<Customer> customers = new ArrayList<Customer>();
-    List<FileLineData> fileLineData = fileData.getData(FieldTypesEnum.CUSTOMER.getCode());
+    final List<Customer> customers = new ArrayList<Customer>();
+    final List<FileLineData> fileLineData = fileData.getData(FieldTypesEnum.CUSTOMER.getCode());
 
     fileLineData.forEach( line -> {
-      List<String> lineItem = line.getData();
+      final List<String> lineItem = line.getData();
 
-      String cnpj = lineItem.get(CUSTOMER_CNPJ_IDX);
-      String name = lineItem.get(CUSTOMER_NAME_IDX);
-      String businessArea = lineItem.get(CUSTOMER_BUSINESS_AREA_IDX);
+      final String cnpj = lineItem.get(CUSTOMER_CNPJ_IDX);
+      final String name = lineItem.get(CUSTOMER_NAME_IDX);
+      final String businessArea = lineItem.get(CUSTOMER_BUSINESS_AREA_IDX);
 
       customers.add(ModelFactory.newCustomer(name, cnpj, businessArea));
     });
@@ -62,19 +62,19 @@ public class ModelLoader {
   }
 
   public static List<Sale> loadSales(FileData fileData, List<Salesman> salesmanList) {
-    List<Sale> sales = new ArrayList<Sale>();    
-    List<FileLineData> fileLineData = fileData.getData(FieldTypesEnum.SALES.getCode());
+    final List<Sale> sales = new ArrayList<Sale>();    
+    final List<FileLineData> fileLineData = fileData.getData(FieldTypesEnum.SALES.getCode());
 
     fileLineData.forEach( line -> {      
-      List<String> lineItem = line.getData();
+      final List<String> lineItem = line.getData();
 
-      Integer id = Integer.valueOf(lineItem.get(SALE_ID_IDX));
-      String strItems = lineItem.get(SALE_ITEMS_IDX);
-      String salesmanName = lineItem.get(SALE_SALESMAN_IDX);
+      final Integer id = Integer.valueOf(lineItem.get(SALE_ID_IDX));
+      final String strItems = lineItem.get(SALE_ITEMS_IDX);
+      final String salesmanName = lineItem.get(SALE_SALESMAN_IDX);
 
-      List<SaleItem> saleItems = convertStringToSaleItems(strItems);
+      final List<SaleItem> saleItems = convertStringToSaleItems(strItems);
 
-      Salesman salesman = salesmanList.stream().filter(salesmanItem -> 
+      final Salesman salesman = salesmanList.stream().filter(salesmanItem -> 
         salesmanName.equals(salesmanItem.getName())).findAny().get();
 
       sales.add(ModelFactory.newSale(id, saleItems, salesman));
@@ -84,7 +84,7 @@ public class ModelLoader {
   }
 
   private static List<SaleItem> convertStringToSaleItems(String strSaleItems) {
-    List<SaleItem> saleItems = new ArrayList<SaleItem>();
+    final List<SaleItem> saleItems = new ArrayList<SaleItem>();
 
     strSaleItems = strSaleItems.replace("[", "");
     strSaleItems = strSaleItems.replace("]", "");

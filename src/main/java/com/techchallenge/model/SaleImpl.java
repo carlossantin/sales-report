@@ -60,7 +60,7 @@ class SaleImpl implements Sale {
     boolean equals = true;
 
     if (obj != null && obj instanceof Sale) {    
-      Sale objSale = (Sale)obj;
+      final Sale objSale = (Sale)obj;
       equals = equals && (this.id.equals(objSale.getId())) &&
                 (this.items.size() == objSale.getItems().size()) &&
                 (this.items.equals(objSale.getItems())) &&

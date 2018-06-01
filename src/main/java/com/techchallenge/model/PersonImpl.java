@@ -23,7 +23,7 @@ abstract class PersonImpl implements Person {
     boolean equals = true;
 
     if (obj != null && obj instanceof Person) {    
-      Person objPerson = (Person)obj;
+      final Person objPerson = (Person)obj;
       equals = equals && (this.name.equals(objPerson.getName()));
     } else {
       equals = false;
