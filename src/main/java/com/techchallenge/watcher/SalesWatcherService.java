@@ -16,6 +16,7 @@ import java.util.List;
 
 import com.techchallenge.reader.FileInputReader;
 import com.techchallenge.reader.FileData;
+import com.techchallenge.writer.FileOutputWriter;
 
 public class SalesWatcherService {  
 
@@ -46,6 +47,13 @@ public class SalesWatcherService {
           }
 
           final FileData fileData = FileInputReader.readFileData(fullPath.toString(), fileDelimiter);
+          
+          String outputFilename = filePath.toString();
+          if (outputFilename.indexOf(".") > 0) {
+            outputFilename = outputFilename.substring(0, outputFilename.lastIndexOf("."));
+          }
+
+          FileOutputWriter.writeSummarizedData(fileData, outputDirectory, outputFilename);
 
         }
       }

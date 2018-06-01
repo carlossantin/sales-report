@@ -44,11 +44,8 @@ public class DataAnalyzer {
 
     sales.forEach( sale -> {
       Salesman salesman = sale.getSalesman();
-      System.out.println(salesman.getName());
       Float saleValue = Optional.ofNullable(sale.getTotalValue()).orElse(0f);
-      System.out.println(saleValue);
       Float lastValue = Optional.ofNullable(salesmanSales.get(salesman)).orElse(0f);
-      System.out.println(lastValue);
       lastValue += saleValue;
 
       salesmanSales.put(salesman, lastValue);
