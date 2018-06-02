@@ -34,28 +34,40 @@ public class SalesWatcherService {
     WatchKey key;
     while ((key = watchService.take()) != null) {
       for (WatchEvent<?> event: key.pollEvents()) {
-        final Path filePath = (Path)event.context();
 
-        //Check if the file has the extension being watched
-        if (pathMatcher.matches(filePath)) {
-          final Path fullPath = path.resolve(filePath);
+        Runnable task = () -> {
 
-          try {
-            Thread.sleep(500); // Without this line a concurrent access to file occurs
-          } catch(InterruptedException e) {
-            e.printStackTrace();
+          final Path filePath = (Path)event.context();
+
+          //Check if the file has the extension being watched
+          if (pathMatcher.matches(filePath)) {
+            final Path fullPath = path.resolve(filePath);
+
+            try{
+
+              Thread.sleep(500); // Without this line a concurrent access to file occurs
+
+              final FileData fileData = FileInputReader.readFileData(fullPath.toString(), fileDelimiter);
+              
+              String outputFilename = filePath.toString();
+              if (outputFilename.indexOf(".") > 0) {
+                outputFilename = outputFilename.substring(0, outputFilename.lastIndexOf("."));
+              }
+            
+              FileOutputWriter.writeSummarizedData(fileData, outputDirectory, outputFilename);
+              
+            } catch (IOException | InterruptedException e) {
+              e.printStackTrace();
+            }
+
           }
+        };
 
-          final FileData fileData = FileInputReader.readFileData(fullPath.toString(), fileDelimiter);
-          
-          String outputFilename = filePath.toString();
-          if (outputFilename.indexOf(".") > 0) {
-            outputFilename = outputFilename.substring(0, outputFilename.lastIndexOf("."));
-          }
+        task.run();
 
-          FileOutputWriter.writeSummarizedData(fileData, outputDirectory, outputFilename);
+        Thread thread = new Thread(task);
+        thread.start();
 
-        }
       }
       key.reset();
     }
