@@ -24,8 +24,8 @@ Sales data has the format id 003. Inside the sales row, there is the list of ite
   ```
 ## Input and output files
 
-The input files must be stored in %HOMEPATH%/data/in. Their extensions must be ".dat".  
-The output files will be created at %HOMEPATH%/data/out. The output file will have the same name of the input file, but its extension will be ".done.dat".  
+The input files must be stored in <USER_HOME_DIRECTORY>/data/in. Their extensions must be ".dat".  
+The output files will be created at <USER_HOME_DIRECTORY>/data/out. The output file will have the same name of the input file, but its extension will be ".done.dat".  
 
 ## Technologies
 
